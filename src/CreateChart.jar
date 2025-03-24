@@ -1,0 +1,40 @@
+package ok;
+import java.awt.Dimension;
+import javax.swing.JFrame;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PiePlot;
+import org.jfree.chart.util.Rotation;
+import org.jfree.data.general.DefaultPieDataset;
+import org.jfree.data.general.PieDataset;
+public class CreateChart extends JFrame {
+	public CreateChart(String appTitle, String chartTitle) {
+		PieDataset dataset = createDataset();
+		JFreeChart chart = createChart(dataset, "Budget Pie Chart");
+		ChartPanel chartPanel = new ChartPanel(chart);
+		chartPanel.setPreferredSize(new Dimension(500,300)); //size of the chart image
+		setContentPane(chartPanel);		
+	}
+	
+	private PieDataset createDataset() {
+		DefaultPieDataset result = new DefaultPieDataset(); //below here insert values for items for the budget such as follows:
+		result.setValue("Rent", 15);//Edit the following Values to EX: 15 = 15% to 25 = 25%
+		result.setValue("Groceries", 25);
+		result.setValue("Gas", 5);
+		result.setValue("Insurance", 5);
+		result.setValue("Savings", 10);
+		result.setValue("Wants", 5);
+		return result;
+	}
+	
+	private JFreeChart createChart(PieDataset dataset, String title) {
+		JFreeChart chart = ChartFactory.createPieChart3D(title, dataset, true, true, false);
+		
+		PiePlot plot = (PiePlot) chart.getPlot();
+		plot.setStartAngle(0);
+		plot.setDirection(Rotation.CLOCKWISE);
+		plot.setForegroundAlpha(0.5f);
+		return chart;
+	}
+}

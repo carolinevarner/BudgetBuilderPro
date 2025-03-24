@@ -1,0 +1,63 @@
+package ok;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+public class MyFrame extends JFrame implements ActionListener{
+	
+	JButton button;
+	CreateChart CC = new CreateChart("Budget Pie Chart", "");
+	
+	JPanel panel;
+	JFrame frame;
+	MyFrame(){
+		
+		button = new JButton();
+		button.setBounds(155, 45, 200, 100); // button size and location
+		button.addActionListener(this);
+		button.setText("Calculate");
+		button.setFocusable(false);
+		
+		
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setLayout(null);
+		this.setSize(500,500);
+	
+		
+		JLabel label = new JLabel();
+		label.setText("Press Calculate To Get The Total");
+		label.setVerticalAlignment(JLabel.BOTTOM);
+		label.setHorizontalAlignment(JLabel.RIGHT);
+	
+	 	panel = new JPanel();
+	 	panel.setBackground(new Color(211,211,211));
+	 	panel.setBounds(0, 0, 500, 500); //Panel / Background Size
+	 	
+	 	frame = new JFrame();
+	 	frame.setLayout(null);
+	 	frame.setSize(500,250); // Application Size
+	 	frame.setVisible(true);
+	 	frame.add(panel);
+	 	panel.add(label);
+	 	frame.add(button);
+	
+	 	CC.pack();	 	
+	 	CC.setVisible(true);
+	 	this.add(CC); //adding the Pie Chart
+		
+	}
+	
+	int total = 500; // example of total;
+	@Override
+	public void actionPerformed(ActionEvent e) {
+	if(e.getSource()==button) {
+		//code for calculate
+		System.out.println("Your total is: " + total);
+	
+		
+		}	
+	}
+}

@@ -1,0 +1,8 @@
+package ok; 
+public class firstclass {
+	 public static void main(String[] args) {
+		
+		 	new MyFrame(); //calls MyFrame in the main class to create everything
+		
+	 }
+}
